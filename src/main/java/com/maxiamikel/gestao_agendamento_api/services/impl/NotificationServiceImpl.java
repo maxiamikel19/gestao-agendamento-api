@@ -42,4 +42,15 @@ public class NotificationServiceImpl implements NotificationService {
             .orElseThrow(() -> new NotFoundException("Id no encontrado")));
 
    }
+
+   @Override
+   public void cancelNotificationById(Long notificationId) {
+      Notification notification = notificationRepository.findById(notificationId)
+            .orElseThrow(() -> new NotFoundException("Id no encontrado"));
+
+      notification.setModifiedDateTime(LocalDateTime.now());
+      notification.setNotoficationStatus(NotoficationStatus.CANCELLED);
+
+      notificationRepository.saveAndFlush(notification);
+   }
 }

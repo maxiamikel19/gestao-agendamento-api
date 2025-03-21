@@ -29,6 +29,7 @@ public class NotificationResponseDTO {
       this.destinationPhone = notification.getDestinationPhone();
       this.notoficationStatus = notification.getNotoficationStatus();
       this.sentDateTime = notification.getSentDateTime();
+      this.modifiedDateTime = notification.getModifiedDateTime();
       this.textMessage = notification.getTextMessage();
    }
 }

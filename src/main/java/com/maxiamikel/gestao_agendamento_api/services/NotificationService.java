@@ -7,4 +7,6 @@ public interface NotificationService {
    NotificationResponseDTO saveNotification(NotificationRequestDTO objDto);
 
    NotificationResponseDTO findNotificationById(Long notificationId);
+
+   void cancelNotificationById(Long notificationId);
 }
