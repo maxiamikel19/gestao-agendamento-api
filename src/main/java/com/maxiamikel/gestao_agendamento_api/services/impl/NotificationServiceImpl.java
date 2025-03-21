@@ -8,6 +8,7 @@ import com.maxiamikel.gestao_agendamento_api.dtos.requests.NotificationRequestDT
 import com.maxiamikel.gestao_agendamento_api.dtos.responses.NotificationResponseDTO;
 import com.maxiamikel.gestao_agendamento_api.entities.Notification;
 import com.maxiamikel.gestao_agendamento_api.enums.NotoficationStatus;
+import com.maxiamikel.gestao_agendamento_api.exception.NotFoundException;
 import com.maxiamikel.gestao_agendamento_api.repositories.NotificationRepository;
 import com.maxiamikel.gestao_agendamento_api.services.NotificationService;
 
@@ -32,6 +33,13 @@ public class NotificationServiceImpl implements NotificationService {
       log.info("Nueva notificacion ingresada con suceso");
 
       return new NotificationResponseDTO(obj);
+
+   }
+
+   @Override
+   public NotificationResponseDTO findNotificationById(Long notificationId) {
+      return new NotificationResponseDTO(notificationRepository.findById(notificationId)
+            .orElseThrow(() -> new NotFoundException("Id no encontrado")));
 
    }
 }

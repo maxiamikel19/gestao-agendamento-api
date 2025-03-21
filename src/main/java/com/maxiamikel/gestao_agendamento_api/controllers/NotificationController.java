@@ -3,6 +3,7 @@ package com.maxiamikel.gestao_agendamento_api.controllers;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +30,11 @@ public class NotificationController {
    @GetMapping
    public ResponseEntity<String> teste() {
       return ResponseEntity.status(HttpStatus.OK).body("Funcionando");
+   }
+
+   @GetMapping("/{id}")
+   public ResponseEntity<NotificationResponseDTO> findNotificationById(@PathVariable Long id) {
+      return ResponseEntity.status(HttpStatus.OK).body(notificationService.findNotificationById(id));
    }
 
 }
