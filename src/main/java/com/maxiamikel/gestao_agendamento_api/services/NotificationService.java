@@ -5,4 +5,6 @@ import com.maxiamikel.gestao_agendamento_api.dtos.responses.NotificationResponse
 
 public interface NotificationService {
    NotificationResponseDTO saveNotification(NotificationRequestDTO objDto);
+
+   NotificationResponseDTO findNotificationById(Long notificationId);
 }
